@@ -14,8 +14,24 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('home');
+})->name('home');
+
+Route::get('/sites', function () {
+    return view('sites');
+})->name('sites');
+
+Route::get('/tanks', function () {
+    return view('tanks');
+})->name('tanks');
+
+Route::get('/livestock', function () {
+    return view('livestock');
+})->name('livestock');
+
+Route::get('/measurements', function () {
+    return view('measurements');
+})->name('measurements');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
