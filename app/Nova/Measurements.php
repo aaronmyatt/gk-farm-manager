@@ -3,26 +3,24 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Gravatar;
-use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\Password;
-use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
-class User extends Resource
+class Measurements extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = \App\Models\User::class;
+    public static $model = \App\Models\Measurements::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'name';
+    public static $title = 'id';
 
     /**
      * The columns that should be searched.
@@ -30,7 +28,7 @@ class User extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'name', 'email',
+        'tank',
     ];
 
     /**
@@ -42,24 +40,18 @@ class User extends Resource
     public function fields(Request $request)
     {
         return [
-            ID::make('#', 'id')->sortable(),
+            Fields\ID::make(__('#'), 'id'),
+            Fields\BelongsTo::make(__('Tank'), 'tank', '\App\Nova\Tanks')->sortable(),
+            Fields\Number::make(__('PH'), 'ph'),
+            Fields\Number::make(__('alkalinity'), 'alkalinity'),
+            Fields\Number::make(__('nh3'), 'nh3'),
+            Fields\Number::make(__('no2'), 'no2'),
+            Fields\Number::make(__('no3'), 'no3'),
+            Fields\Number::make(__('fe'), 'fe'),
+            Fields\Number::make(__('temperature'), 'temperature'),
+            Fields\Number::make(__('salinity'), 'salinity'),
+            Fields\TextArea::make(__('Remark'), 'remark'),
 
-            Gravatar::make()->maxWidth(50),
-
-            Text::make('Name')
-                ->sortable()
-                ->rules('required', 'max:255'),
-
-            Text::make('Email')
-                ->sortable()
-                ->rules('required', 'email', 'max:254')
-                ->creationRules('unique:users,email')
-                ->updateRules('unique:users,email,{{resourceId}}'),
-
-            Password::make('Password')
-                ->onlyOnForms()
-                ->creationRules('required', 'string', 'min:8')
-                ->updateRules('nullable', 'string', 'min:8'),
         ];
     }
 

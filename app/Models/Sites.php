@@ -8,4 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 class Sites extends Model
 {
     use HasFactory;
+
+    public function parent()
+    {
+        return $this->belongsTo(Sites::class, 'parent_id');
+    }
+
+    public function creator()
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
+
+    public function updater()
+    {
+        return $this->belongsTo(User::class, 'updated_by');
+    }
+
 }

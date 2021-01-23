@@ -13,9 +13,13 @@ class SitesSeeder extends Seeder
      */
     public function run()
     {
-        $site = \App\Models\Sites::factory(2)->create();
+        $sites = \App\Models\Sites::factory(2)->create();
+        $parent = $sites->first();
+        $parent_name = $parent->name;
+
         \App\Models\Sites::factory(1)->create([
-            'parent_id' => $site->first()->id
+            'name' =>  "$parent_name Building One",
+            'parent_id' => $parent->id
         ]);
     }
 }

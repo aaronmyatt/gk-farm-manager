@@ -13,6 +13,6 @@ class LivestockSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Measurements::factory(100)->create();
+        \App\Models\Livestock::factory(100)->create();
     }
 }

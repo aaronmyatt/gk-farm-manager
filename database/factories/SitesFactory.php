@@ -22,7 +22,7 @@ class SitesFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name,
+            'name' => $this->faker->randomElement(['Semenyih', 'Port Dickson']),
             'parent_id' => null,
             'created_by' => \App\Models\User::first(),
             'updated_by' => \App\Models\User::first(),

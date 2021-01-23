@@ -35,6 +35,6 @@ class CreateLivestocksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('livestocks');
+        Schema::dropIfExists('livestock');
     }
 }
