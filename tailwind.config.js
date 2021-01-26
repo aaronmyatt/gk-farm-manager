@@ -10,7 +10,7 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+                sans: ['Inter var', ...defaultTheme.fontFamily.sans],
             },
         },
     },
@@ -18,6 +18,7 @@ module.exports = {
     variants: {
         extend: {
             opacity: ['disabled'],
+            borderWidth: ['hover'],
         },
     },
 

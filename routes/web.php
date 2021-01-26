@@ -18,19 +18,33 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/sites', function () {
-    return view('sites');
+    return view('sites', [
+        'sites' => \App\Models\Sites::all()
+    ]);
 })->name('sites');
 
 Route::get('/tanks', function () {
-    return view('tanks');
+    return view('tanks', [
+        'tanks' => \App\Models\Tanks::all()
+    ]);
 })->name('tanks');
 
+Route::get('/tank/{id}', function ($id) {
+    return view('tanks', [
+        'tanks' => \App\Models\Tanks::findOrFail($id)
+    ]);
+})->name('tankDetails');
+
 Route::get('/livestock', function () {
-    return view('livestock');
+    return view('livestock', [
+        'livestock' => \App\Models\Livestock::all()
+    ]);
 })->name('livestock');
 
 Route::get('/measurements', function () {
-    return view('measurements');
+    return view('measurements', [
+        'measurements' => \App\Models\Measurements::all()
+    ]);
 })->name('measurements');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
