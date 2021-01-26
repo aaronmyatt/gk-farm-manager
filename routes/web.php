@@ -31,7 +31,9 @@ Route::get('/tanks', function () {
 
 Route::get('/tank/{id}', function ($id) {
     return view('tanks', [
-        'tanks' => \App\Models\Tanks::findOrFail($id)
+        'tanks' => [
+            \App\Models\Tanks::findOrFail($id)
+        ]
     ]);
 })->name('tankDetails');
 
