@@ -75,11 +75,11 @@
                                         "data" => $measurement->fe
                                     ],
                                     [
-                                        "label" => "salinity",
+                                        "label" => "Salinity",
                                         "data" => $measurement->salinity
                                     ],
                                     [
-                                        "label" => "temperate",
+                                        "label" => "Temperate",
                                         "data" => $measurement->temperature
                                     ]
                                 ]);
