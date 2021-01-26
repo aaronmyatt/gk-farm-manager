@@ -148,6 +148,7 @@
                     @endforeach
                 </x-table>
             </div>
+            {{ $measurements->links() }}
         </div>
     </div>
 </x-app-layout>

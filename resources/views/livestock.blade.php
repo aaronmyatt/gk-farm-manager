@@ -118,6 +118,7 @@
                     @endforeach
                 </x-table>
             </div>
+            {{ $livestock->links() }}
         </div>
     </div>
 </x-app-layout>

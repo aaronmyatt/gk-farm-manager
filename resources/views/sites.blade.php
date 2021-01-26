@@ -100,6 +100,7 @@
                     @endforeach
                 </x-table>
             </div>
+            {{ $sites->links() }}
         </div>
     </div>
 </x-app-layout>

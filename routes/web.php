@@ -19,13 +19,13 @@ Route::get('/', function () {
 
 Route::get('/sites', function () {
     return view('sites', [
-        'sites' => \App\Models\Sites::all()
+        'sites' => \App\Models\Sites::paginate(25)
     ]);
 })->name('sites');
 
 Route::get('/tanks', function () {
     return view('tanks', [
-        'tanks' => \App\Models\Tanks::all()
+        'tanks' => \App\Models\Tanks::paginate(25)
     ]);
 })->name('tanks');
 
@@ -37,13 +37,13 @@ Route::get('/tank/{id}', function ($id) {
 
 Route::get('/livestock', function () {
     return view('livestock', [
-        'livestock' => \App\Models\Livestock::all()
+        'livestock' => \App\Models\Livestock::paginate(25)
     ]);
 })->name('livestock');
 
 Route::get('/measurements', function () {
     return view('measurements', [
-        'measurements' => \App\Models\Measurements::all()
+        'measurements' => \App\Models\Measurements::paginate(15)
     ]);
 })->name('measurements');
 

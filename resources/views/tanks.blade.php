@@ -30,8 +30,13 @@
                         <td class="px-6 py-3 text-sm font-medium text-gray-900">
                             {{ $tank->name }}
                         </td>
-                        <td class="px-6 py-3 text-sm font-medium text-gray-500">
-                            {{ $tank->site->name }}
+                       <td class="px-6 py-3 text-sm font-medium text-blue-700">
+                            <a 
+                                class="hover:border-b-2 hover:border-blue-500"
+                                href="{{ route('sites') }}"
+                            > 
+                                {{ $tank->site->name }}
+                            </a>
                         </td>
                         <td class="px-6 py-3 text-sm font-medium text-blue-500">
                             <a 
