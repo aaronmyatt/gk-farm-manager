@@ -19,8 +19,11 @@ module.exports = {
         extend: {
             opacity: ['disabled'],
             borderWidth: ['hover'],
+            backgroundColor: ['active', 'hover'],
+            animation: ['hover', 'focus', 'active'],
+            boxShadow: ['hover', 'focus', 'active']
         },
     },
 
-    plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
+    plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography'), require('@tailwindcss/aspect-ratio')],
 };
