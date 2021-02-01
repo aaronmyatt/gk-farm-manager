@@ -9,6 +9,18 @@ class Measurements extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'ph',
+        'alkalinity',
+        'nh3',
+        'no2',
+        'no3',
+        'fe',
+        'salinity',
+        'temperature',
+        'remark'
+    ];
+
     public function tank()
     {
         return $this->belongsTo(Tanks::class);

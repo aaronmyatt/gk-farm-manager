@@ -38,16 +38,28 @@ Route::get('/tank/{id}', function ($id) {
 })->name('tankDetails');
 
 Route::get('/livestock', function () {
-    return view('livestock', [
+    return view('livestock/index', [
         'livestock' => \App\Models\Livestock::paginate(25)
     ]);
 })->name('livestock');
 
+Route::get('/livestock/form', function () {
+    return view('livestock/form', [
+        
+    ]);
+})->name('livestock-form');
+
 Route::get('/measurements', function () {
-    return view('measurements', [
+    return view('measurements/index', [
         'measurements' => \App\Models\Measurements::paginate(15)
     ]);
 })->name('measurements');
+
+Route::get('/measurements/form', function () {
+    return view('measurements/form', [
+        
+    ]);
+})->name('measurements-form');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

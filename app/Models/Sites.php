@@ -24,4 +24,9 @@ class Sites extends Model
         return $this->belongsTo(User::class, 'updated_by');
     }
 
+    public function tanks()
+    {
+        return $this->hasMany(Tanks::class, 'site_id', 'id');
+    }
+
 }
