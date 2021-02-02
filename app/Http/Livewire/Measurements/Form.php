@@ -4,6 +4,8 @@ namespace App\Http\Livewire\Measurements;
 
 use App\Models\Measurements;
 use App\Models\Sites;
+use App\Models\Tanks;
+use Illuminate\Http\Request;
 use Livewire\Component;
 
 class Form extends Component
@@ -25,8 +27,14 @@ class Form extends Component
         'measurement.remark' => 'string'
     ];
 
-    public function mount(){
+    public function mount(Request $request){
         $this->measurement = new Measurements();
+
+        if($request->route('tank_id')){
+            $tank =  Tanks::findOrFail($request->route('tank_id'));
+            $this->measurement->tank_id = $tank->id;
+            $this->measurement->site_id = $tank->site_id;
+        } 
     }
 
     public function updated($name)

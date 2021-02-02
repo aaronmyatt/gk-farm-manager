@@ -43,10 +43,8 @@ Route::get('/livestock', function () {
     ]);
 })->name('livestock');
 
-Route::get('/livestock/form', function () {
-    return view('livestock/form', [
-        
-    ]);
+Route::get('/livestock/form/{tank_id?}', function ($tank_id = null) {
+    return view('livestock/form');
 })->name('livestock-form');
 
 Route::get('/measurements', function () {
@@ -55,10 +53,8 @@ Route::get('/measurements', function () {
     ]);
 })->name('measurements');
 
-Route::get('/measurements/form', function () {
-    return view('measurements/form', [
-        
-    ]);
+Route::get('/measurements/form/{tank_id?}', function ($tank_id = null) {
+    return view('measurements/form');
 })->name('measurements-form');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

@@ -4,6 +4,8 @@ namespace App\Http\Livewire\Livestock;
 
 use App\Models\Livestock;
 use App\Models\Sites;
+use App\Models\Tanks;
+use Illuminate\Http\Request;
 use Livewire\Component;
 
 class Form extends Component
@@ -20,8 +22,14 @@ class Form extends Component
         
     ];
 
-    public function mount(){
+    public function mount(Request $request){
         $this->livestock = new Livestock();
+
+        if($request->route('tank_id')){
+            $tank =  Tanks::findOrFail($request->route('tank_id'));
+            $this->measurement->tank_id = $tank->id;
+            $this->measurement->site_id = $tank->site_id;
+        } 
     }
 
     public function updated($name)
