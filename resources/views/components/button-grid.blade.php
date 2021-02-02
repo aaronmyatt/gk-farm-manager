@@ -4,7 +4,9 @@
             <div
                 class="col-span-3 row-span-3 overflow-hidden text-center shadow-xl cursor-pointer overflow-clip rounded-2xl active:shadow-sm active:animate-pulse active:bg-gray-300">
                 <div class="aspect-w-1 aspect-h-1">
-                    <div class="flex flex-col items-center justify-center">
+                    <a 
+                        href="{{ route('measurements-form') }}"
+                        class="flex flex-col items-center justify-center">
                         <svg class="w-28 sm:w-32" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                             xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -13,13 +15,14 @@
                         </svg>
 
                         <span class="text-sm font-bold select-none sm:text-base">Measurement</span>
-                    </div>
+                    </a>
                 </div>
             </div>
             <div
                 class="col-span-3 row-span-3 overflow-hidden text-center shadow-xl cursor-pointer overflow-clip rounded-2xl active:shadow-sm active:animate-pulse active:bg-gray-300">
                 <div class="aspect-w-1 aspect-h-1">
-                    <div class="flex flex-col items-center justify-center">
+                    <a href="{{ route('livestock-form') }}" 
+                        class="flex flex-col items-center justify-center">
                         <svg class="w-28 sm:w-32" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                             xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -27,13 +30,14 @@
                             </path>
                         </svg>
                         <span class="text-sm font-bold select-none sm:text-base">Livestock</span>
-                    </div>
+                    </a>
                 </div>
             </div>
             <div
                 class="col-span-3 row-span-3 overflow-hidden text-center shadow-xl cursor-pointer overflow-clip rounded-2xl active:shadow-sm active:animate-pulse active:bg-gray-300">
                 <div class="aspect-w-1 aspect-h-1">
-                    <div class="flex flex-col items-center justify-center">
+                    <a 
+                        href="#" class="flex flex-col items-center justify-center">
                         <svg class="w-28 sm:w-32" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                             xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -41,13 +45,14 @@
                             </path>
                         </svg>
                         <span class="text-sm font-bold select-none sm:text-base"> Reports</span>
-                    </div>
+                    </a>
                 </div>
             </div>
             <div
                 class="col-span-3 row-span-3 overflow-hidden text-center shadow-xl cursor-pointer overflow-clip rounded-2xl active:shadow-sm active:animate-pulse active:bg-gray-300">
                 <div class="aspect-w-1 aspect-h-1">
-                    <div class="flex flex-col items-center justify-center">
+                    <a 
+                        href="#"class="flex flex-col items-center justify-center">
                         <svg class="w-28 sm:w-32" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                             xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -57,7 +62,7 @@
                                 d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                         </svg>
                         <span class="text-sm font-bold select-none sm:text-base"> Settings</span>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>

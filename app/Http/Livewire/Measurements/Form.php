@@ -4,7 +4,6 @@ namespace App\Http\Livewire\Measurements;
 
 use App\Models\Measurements;
 use App\Models\Sites;
-use App\Models\Tanks;
 use Livewire\Component;
 
 class Form extends Component
