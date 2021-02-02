@@ -5,8 +5,8 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+    <div class="py-6">
+        <div class="px-2 mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="bg-white shadow-xl sm:rounded-lg">
                 <x-table>  
                     <x-slot name="tableHeader">
