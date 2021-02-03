@@ -27,15 +27,15 @@ class Form extends Component
 
         if($request->route('tank_id')){
             $tank =  Tanks::findOrFail($request->route('tank_id'));
-            $this->measurement->tank_id = $tank->id;
-            $this->measurement->site_id = $tank->site_id;
+            $this->livestock->tank_id = $tank->id;
+            $this->livestock->site_id = $tank->site_id;
         } 
     }
 
     public function updated($name)
     {
-        if($name == "measurement.site_id"){
-            $this->measurement->tank_id = null;
+        if($name == "livestock.site_id"){
+            $this->livestock->tank_id = null;
         }
     }
 

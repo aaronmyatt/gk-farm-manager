@@ -1,8 +1,12 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="text-xl font-semibold leading-tight text-gray-800">
-            {{ __(ucfirst(Route::currentRouteName())) }}
-        </h2>
+        <div class="flex justify-between space-x-4 md:justify-start">    
+            <h2 class="text-xl font-semibold leading-tight text-gray-800">
+                {{ __(ucfirst(Route::currentRouteName())) }}
+            </h2>
+
+            <x-elements.button label="Add New" href="{{ route('livestock-form') }}" />
+        </div>
     </x-slot>
 
     <div class="py-6">

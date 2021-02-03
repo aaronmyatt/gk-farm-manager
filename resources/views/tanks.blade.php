@@ -39,20 +39,10 @@
                             </a>
                         </td>
                         <td class="px-6 py-3 text-sm font-medium text-blue-500">
-                            <a 
-                                class="hover:border-b hover:border-blue-900"
-                                href="{{ route('livestock', ['tank' => $tank->id]) }}"
-                            > 
-                                Show
-                            </a>
+                            <x-elements.button label="Add Stock Count" href="{{ route('livestock-form', ['tank_id' => $tank->id]) }}" />
                         </td>
                         <td class="px-6 py-3 text-sm font-medium text-blue-500">
-                            <a 
-                                class="hover:border-b hover:border-blue-900"
-                                href="{{ route('measurements', ['tank' => $tank->id]) }}"
-                            > 
-                                Show
-                            </a>
+                            <x-elements.button label="Measure Quality" href="{{ route('measurements-form', ['tank_id' => $tank->id]) }}" />
                         </td>
 
                         {{-- <td class="pr-6">
