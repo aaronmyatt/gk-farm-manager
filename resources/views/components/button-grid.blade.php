@@ -14,7 +14,8 @@
                             </path>
                         </svg>
 
-                        <span class="text-sm font-bold select-none sm:text-base">Measurement</span>
+                        <span class="text-sm font-bold select-none sm:text-base">Measure</span>
+                        <span class="text-sm font-bold select-none sm:text-base">Water Quality</span>
                     </a>
                 </div>
             </div>
@@ -29,7 +30,7 @@
                                 d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z">
                             </path>
                         </svg>
-                        <span class="text-sm font-bold select-none sm:text-base">Livestock</span>
+                        <span class="text-sm font-bold select-none sm:text-base">Count Stock</span>
                     </a>
                 </div>
             </div>
@@ -45,6 +46,7 @@
                             </path>
                         </svg>
                         <span class="text-sm font-bold select-none sm:text-base"> Reports</span>
+                        <span class="text-sm font-bold select-none sm:text-base"> (Coming Soon)</span>
                     </a>
                 </div>
             </div>
@@ -62,6 +64,7 @@
                                 d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                         </svg>
                         <span class="text-sm font-bold select-none sm:text-base"> Settings</span>
+                        <span class="text-sm font-bold select-none sm:text-base"> (Coming Soon)</span>
                     </a>
                 </div>
             </div>

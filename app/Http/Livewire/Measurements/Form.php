@@ -16,7 +16,7 @@ class Form extends Component
     protected $rules = [
         'measurement.site_id' => 'required|numeric',
         'measurement.tank_id' => 'required|numeric',
-        'measurement.ph' => 'numeric',
+        'measurement.ph' => 'numeric|between:1,14',
         'measurement.alkalinity' => 'numeric',
         'measurement.nh3' => 'numeric',
         'measurement.no2' => 'numeric',
