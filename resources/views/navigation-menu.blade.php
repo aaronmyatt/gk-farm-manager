@@ -30,8 +30,21 @@
                 </div>
             </div>
 
-            <div class="hidden sm:flex sm:items-center sm:ml-6">
-
+            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                @if(Auth::check())
+                    <form method="POST" action="{{ route('logout') }}" class="flex">
+                        @csrf
+    
+                        <x-jet-nav-link onclick="event.preventDefault();
+                                        this.closest('form').submit();">
+                            {{ __('Logout') }}
+                        </x-jet-nav-link>
+                    </form>
+                @else
+                    <x-jet-nav-link href="{{ route('login') }}">
+                        {{ __('Login') }}
+                    </x-jet-nav-link>
+                @endif
             </div>
 
             <!-- Hamburger -->
@@ -68,6 +81,9 @@
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">
+            <x-jet-responsive-nav-link href="{{ route('login') }}">
+                {{ __('Login') }}
+            </x-jet-responsive-nav-link>
 
             <div class="mt-3 space-y-1">
                 <!-- Authentication -->
