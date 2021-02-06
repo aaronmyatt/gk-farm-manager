@@ -1,4 +1,4 @@
-@props(['id'])
+@props(['id', 'tankId'])
 
 <td x-data="{
     'showDropdown': false
@@ -30,7 +30,7 @@
         x-show="showDropdown"
         class="absolute top-0 z-10 w-64 mt-1 origin-top-right bg-white divide-y divide-gray-200 rounded-md shadow-lg right-7 ring-1 ring-black ring-opacity-5" role="menu" aria-orientation="vertical" aria-labelledby="tank-options-menu-{{$id}}">
         <div class="py-1" role="none">
-            <a href="#" class="flex items-center px-4 py-2 text-base text-gray-700 group hover:bg-gray-100 hover:text-gray-900" role="menuitem">
+            <a href="{{ route('measurements-form', ['tank_id' => $tankId]) }}" class="flex items-center px-4 py-2 text-base text-gray-700 group hover:bg-gray-100 hover:text-gray-900" role="menuitem">
                 <svg class="w-6 h-6 mr-3 text-gray-400 group-hover:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -39,7 +39,7 @@
             </svg>
             Measure Water Quality
             </a>
-        <a href="#" class="flex items-center px-4 py-2 text-base text-gray-700 group hover:bg-gray-100 hover:text-gray-900" role="menuitem">
+        <a href="{{ route('livestock-form', ['tank_id' => $tankId]) }}" class="flex items-center px-4 py-2 text-base text-gray-700 group hover:bg-gray-100 hover:text-gray-900" role="menuitem">
             <svg class="w-6 h-6 mr-3 text-gray-400 group-hover:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

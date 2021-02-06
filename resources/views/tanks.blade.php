@@ -46,7 +46,7 @@
 
                         </td>
 
-                        <x-table.options-dropdown :id="$loop->index"/>
+                        <x-table.options-dropdown :id="$loop->index" :tank-id="$tank->id"/>
                     </tr>
                     @endforeach
                 </x-table>
