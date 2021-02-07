@@ -6,6 +6,7 @@ use App\Models\Livestock;
 use App\Models\Sites;
 use App\Models\Tanks;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Form extends Component
@@ -62,6 +63,11 @@ class Form extends Component
     {
         Ray($this->livestock)->green();
         $this->validate();
+
+        $this->livestock->created_by = Auth::id();
+        $this->livestock->updated_by = Auth::id();
+        $this->livestock->save();
+        return redirect()->route('livestock');
     }
 
     public function render()

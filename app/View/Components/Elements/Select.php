@@ -7,10 +7,12 @@ use Illuminate\View\Component;
 class Select extends Component
 {
     public $label;
+    public $errorMessage;
 
-    public function __construct(String $label)
+    public function __construct(String $label, String $errorMessage = "")
     {
         $this->label = $label;
+        $this->errorMessage = $errorMessage;
     }
 
     /**

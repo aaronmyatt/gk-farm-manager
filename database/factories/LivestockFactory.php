@@ -24,6 +24,7 @@ class LivestockFactory extends Factory
         return [
             'created_by' => \App\Models\User::first(),
             'updated_by' => \App\Models\User::first(),
+            'site_id' => \App\Models\Sites::first(),
             'tank_id' => \App\Models\Tanks::all()->random(),
             'gender' => $this->faker->randomElement(['male', 'female']),
             'body_weight_grams' => $this->faker->numberBetween(40, 50),

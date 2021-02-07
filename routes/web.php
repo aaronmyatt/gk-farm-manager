@@ -39,7 +39,7 @@ Route::get('/tank/{id}', function ($id) {
 
 Route::get('/livestock', function () {
     return view('livestock/index', [
-        'livestock' => \App\Models\Livestock::paginate(25)
+        'livestock' => \App\Models\Livestock::orderBy('updated_at', 'desc')->paginate(25)
     ]);
 })->name('livestock');
 
@@ -49,7 +49,7 @@ Route::get('/livestock/form/{tank_id?}', function ($tank_id = null) {
 
 Route::get('/measurements', function () {
     return view('measurements/index', [
-        'measurements' => \App\Models\Measurements::paginate(15)
+        'measurements' => \App\Models\Measurements::orderBy('updated_at', 'desc')->paginate(25)
     ]);
 })->name('measurements');
 

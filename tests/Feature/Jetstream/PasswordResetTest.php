@@ -1,7 +1,6 @@
 <?php
 
-namespace Tests\Feature;
-
+namespace Tests\Jetstream\Feature;
 use App\Models\User;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Foundation\Testing\RefreshDatabase;

@@ -15,7 +15,7 @@
         @endforeach
     </x-elements.select>
 
-    <x-elements.select label="gender" wire:model='livestock.gender'>
+    <x-elements.select label="gender" wire:model='livestock.gender' error-message="A gender must be chosen">
         <option selected value="female">
             Female
         </option>

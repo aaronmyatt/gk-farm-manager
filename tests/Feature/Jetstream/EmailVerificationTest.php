@@ -1,7 +1,6 @@
 <?php
 
-namespace Tests\Feature;
-
+namespace Tests\Jetstream\Feature;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Verified;
