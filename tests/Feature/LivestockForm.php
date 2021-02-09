@@ -21,6 +21,7 @@ it('redirects to livestock page', function () {
 
 it('saves one new livestock row', function () {
     $this->actingAs(User::factory()->create());
+    $count = Livestock::count();
 
     Livewire::test(Form::class)
         ->set('livestock.site_id', 1)
@@ -31,5 +32,5 @@ it('saves one new livestock row', function () {
         ->call('save');
 
     Ray(Livestock::count())->red();
-    // $this->assertTrue(Livestock::count() === 1);
+    $this->assertTrue(Livestock::count() === ($count + 1));
 });

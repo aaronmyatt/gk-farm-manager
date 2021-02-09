@@ -6,6 +6,7 @@ use App\Models\Measurements;
 use App\Models\Sites;
 use App\Models\Tanks;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Form extends Component
@@ -67,6 +68,11 @@ class Form extends Component
     {
         Ray($this->measurement)->green();
         $this->validate();
+
+        $this->measurement->created_by = Auth::id();
+        $this->measurement->updated_by = Auth::id();
+        $this->measurement->save();
+        return redirect()->route('measurements');
     }
 
     public function render()
