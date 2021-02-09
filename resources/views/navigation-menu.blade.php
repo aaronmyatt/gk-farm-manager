@@ -81,10 +81,7 @@
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">
-            <x-jet-responsive-nav-link href="{{ route('login') }}">
-                {{ __('Login') }}
-            </x-jet-responsive-nav-link>
-
+            @if(Auth::check())
             <div class="mt-3 space-y-1">
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
@@ -97,6 +94,11 @@
                     </x-jet-responsive-nav-link>
                 </form>
             </div>
+            @else
+            <x-jet-responsive-nav-link href="{{ route('login') }}">
+                {{ __('Login') }}
+            </x-jet-responsive-nav-link>
+            @endif
         </div>
     </div>
 </nav>
