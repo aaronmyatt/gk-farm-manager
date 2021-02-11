@@ -32,7 +32,7 @@
 
             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                 @if(Auth::check())
-                    <form method="POST" action="{{ route('logout') }}" class="flex">
+                    <form method="POST" action="{{ route('logout') }}" class="flex cursor-pointer">
                         @csrf
     
                         <x-jet-nav-link onclick="event.preventDefault();
