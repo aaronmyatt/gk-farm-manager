@@ -45,9 +45,9 @@ class Sites extends Resource
         return [
             Fields\ID::make(__('#'), 'id'),
             Fields\Text::make(__('Name'), 'name')->sortable(),
-            Fields\BelongsTo::make('Parent', 'parent', 'App\Nova\Sites'),
-            Fields\BelongsTo::make('Created By', 'creator', 'App\Nova\User'),
-            Fields\BelongsTo::make('Updated By', 'updater', 'App\Nova\User'),
+            Fields\BelongsTo::make('Parent', 'parent', 'App\Nova\Sites')->nullable(),
+            Fields\BelongsTo::make('Created By', 'creator', 'App\Nova\User')->default($request->user()->getKey()),
+            Fields\BelongsTo::make('Updated By', 'updater', 'App\Nova\User')->default($request->user()->getKey()),
         ];
     }
 

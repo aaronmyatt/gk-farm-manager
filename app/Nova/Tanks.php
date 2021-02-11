@@ -46,8 +46,8 @@ class Tanks extends Resource
             Fields\ID::make(__('#'), 'id'),
             Fields\Text::make(__('Name'), 'name'),
             Fields\BelongsTo::make('Site', 'site', 'App\Nova\Sites')->sortable(),
-            Fields\BelongsTo::make('Created By', 'creator', 'App\Nova\User'),
-            Fields\BelongsTo::make('Updated By', 'updater', 'App\Nova\User'),
+            Fields\BelongsTo::make('Created By', 'creator', 'App\Nova\User')->default($request->user()->getKey()),
+            Fields\BelongsTo::make('Updated By', 'updater', 'App\Nova\User')->default($request->user()->getKey()),
         ];
     }
 
