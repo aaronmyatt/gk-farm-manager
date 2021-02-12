@@ -14,6 +14,16 @@ class Tanks extends Model
         return $this->belongsTo(Sites::class);
     }
 
+    public function measurements()
+    {
+        return $this->hasMany(Measurements::class, 'tank_id');
+    }
+
+    public function livestock()
+    {
+        return $this->hasMany(Livestock::class, 'tank_id');
+    }
+
     public function creator()
     {
         return $this->belongsTo(User::class, 'created_by');

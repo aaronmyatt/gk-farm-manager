@@ -21,14 +21,15 @@ class LivestockFactory extends Factory
      */
     public function definition()
     {
+        $tank = \App\Models\Sites::first()->tanks->first();
         return [
             'created_by' => \App\Models\User::first(),
             'updated_by' => \App\Models\User::first(),
             'site_id' => \App\Models\Sites::first(),
-            'tank_id' => \App\Models\Tanks::all()->random(),
+            'tank_id' => $tank,
             'gender' => $this->faker->randomElement(['male', 'female']),
             'body_weight_grams' => $this->faker->numberBetween(40, 50),
-            'number_of_pieces' => $this->faker->numberBetween(150, 300),
+            'number_of_pieces' => 500,
         ];
     }
 }
