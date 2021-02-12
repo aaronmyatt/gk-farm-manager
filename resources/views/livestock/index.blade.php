@@ -9,8 +9,14 @@
         </div>
     </x-slot>
 
+
     <div class="py-6">
         <div class="px-2 mx-auto max-w-7xl sm:px-6 lg:px-8">
+            <livewire:datatable 
+                model="App\Models\Livestock" 
+                include="updated_at, gender, body_weight_grams, number_of_pieces"
+            />
+
             <div class="bg-white shadow-xl sm:rounded-lg">
                 <x-table>  
                     <x-slot name="tableHeader">
