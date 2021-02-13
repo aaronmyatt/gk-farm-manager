@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Events\LivestockSaved;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 class Livestock extends Model
@@ -9,6 +10,10 @@ class Livestock extends Model
     use HasFactory;
 
     protected $table = 'livestock';
+
+    protected $dispatchesEvents = [
+        'saved' => LivestockSaved::class
+    ];
 
     protected $attributes = [
         'gender' => 'female'
