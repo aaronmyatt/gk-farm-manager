@@ -3,10 +3,12 @@
 use App\Http\Livewire\Livestock\Form;
 use App\Models\Livestock;
 use App\Models\User;
+use Illuminate\Support\Facades\Event;
 use Livewire\Livewire;
 
 it('redirects to livestock page', function () {
     
+    Event::fake();
     $this->actingAs(User::factory()->create());
 
     Livewire::test(Form::class)
@@ -17,9 +19,12 @@ it('redirects to livestock page', function () {
         ->set('livestock.gender', 'male')
         ->call('save')
         ->assertRedirect();
+        
+    Event::assertDispatched(LivestockCreated::class);
 });
 
 it('saves one new livestock row', function () {
+    Event::fake();
     $this->actingAs(User::factory()->create());
     $count = Livestock::count();
 
@@ -33,4 +38,5 @@ it('saves one new livestock row', function () {
 
     Ray(Livestock::count())->red();
     $this->assertTrue(Livestock::count() === ($count + 1));
+    Event::assertDispatched(LivestockCreated::class);
 });

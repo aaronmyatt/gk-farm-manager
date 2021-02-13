@@ -14,7 +14,7 @@
         <div class="px-2 mx-auto max-w-7xl sm:px-6 lg:px-8">
             <livewire:datatable 
                 model="App\Models\Livestock" 
-                include="updated_at, gender, body_weight_grams, number_of_pieces"
+                include="updated_at, gender, body_weight_grams, number_of_pieces, mortality"
             />
 
             <div class="bg-white shadow-xl sm:rounded-lg">
