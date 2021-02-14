@@ -13,7 +13,6 @@
     <div class="pb-6">
         <div class="px-2 mx-auto max-w-7xl sm:px-6 lg:px-8">
             <livewire:livestock-datatable />
-
         </div>
     </div>
 </x-app-layout>

@@ -9,7 +9,7 @@ use Mediconesystems\LivewireDatatables\DateColumn;
 use Mediconesystems\LivewireDatatables\NumberColumn;
 use Mediconesystems\LivewireDatatables\Http\Livewire\LivewireDatatable;
 
-class LivestockDataTable extends LivewireDatatable
+class LivestockDatatable extends LivewireDatatable
 {
 
     public $beforeTableSlot='components.datatables.table-stats';

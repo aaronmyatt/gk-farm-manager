@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "af431453eaea94e75beb4bbb4300a181",
+    "content-hash": "e5c2b9e611a1c4990d4aa9451af38c81",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2629,16 +2629,16 @@
         },
         {
             "name": "livewire/livewire",
-            "version": "v2.3.8",
+            "version": "v2.3.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/livewire/livewire.git",
-                "reference": "c661e295428b2baaff04320d0a9424db5ca72be5"
+                "reference": "1a1d43ff365301ae99ed7f0ccf02c553d4eeba03"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/livewire/livewire/zipball/c661e295428b2baaff04320d0a9424db5ca72be5",
-                "reference": "c661e295428b2baaff04320d0a9424db5ca72be5",
+                "url": "https://api.github.com/repos/livewire/livewire/zipball/1a1d43ff365301ae99ed7f0ccf02c553d4eeba03",
+                "reference": "1a1d43ff365301ae99ed7f0ccf02c553d4eeba03",
                 "shasum": ""
             },
             "require": {
@@ -2689,7 +2689,7 @@
             "description": "A front-end framework for Laravel.",
             "support": {
                 "issues": "https://github.com/livewire/livewire/issues",
-                "source": "https://github.com/livewire/livewire/tree/v2.3.8"
+                "source": "https://github.com/livewire/livewire/tree/v2.3.17"
             },
             "funding": [
                 {
@@ -2697,7 +2697,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-01-21T14:01:48+00:00"
+            "time": "2021-02-09T15:15:49+00:00"
         },
         {
             "name": "lorisleiva/laravel-actions",
@@ -3097,29 +3097,30 @@
         },
         {
             "name": "mediconesystems/livewire-datatables",
-            "version": "v0.4.3",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/MedicOneSystems/livewire-datatables.git",
-                "reference": "b0f3b3b9ee801d6870de898436090b27b2bc19c0"
+                "reference": "c3ee9c1fcf663d5bb5649c3a1f2f15448641b811"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MedicOneSystems/livewire-datatables/zipball/b0f3b3b9ee801d6870de898436090b27b2bc19c0",
-                "reference": "b0f3b3b9ee801d6870de898436090b27b2bc19c0",
+                "url": "https://api.github.com/repos/MedicOneSystems/livewire-datatables/zipball/c3ee9c1fcf663d5bb5649c3a1f2f15448641b811",
+                "reference": "c3ee9c1fcf663d5bb5649c3a1f2f15448641b811",
                 "shasum": ""
             },
             "require": {
                 "illuminate/support": "^7.0|^8.0",
                 "livewire/livewire": "^1.2|^2.0",
                 "maatwebsite/excel": "^3.1",
-                "php": "^7.2.5"
+                "php": "^7.2.5|^8.0"
             },
             "require-dev": {
                 "laravel/legacy-factories": "^1.0.4",
                 "orchestra/testbench": "^4.0|5.0|6.0",
                 "phpunit/phpunit": "^8.0|9.0"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -3154,9 +3155,9 @@
             ],
             "support": {
                 "issues": "https://github.com/MedicOneSystems/livewire-datatables/issues",
-                "source": "https://github.com/MedicOneSystems/livewire-datatables/tree/v0.4.3"
+                "source": "https://github.com/MedicOneSystems/livewire-datatables/tree/master"
             },
-            "time": "2020-11-16T12:02:40+00:00"
+            "time": "2021-01-28T19:19:46+00:00"
         },
         {
             "name": "mobiledetect/mobiledetectlib",
@@ -11876,7 +11877,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "mediconesystems/livewire-datatables": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
