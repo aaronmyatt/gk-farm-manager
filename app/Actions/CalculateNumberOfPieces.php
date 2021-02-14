@@ -6,14 +6,15 @@ use App\Events\LivestockSaved;
 use App\Models\Livestock;
 use Lorisleiva\Actions\Concerns\AsAction;
 
-class CalculateMortality
+class CalculateNumberOfPieces
 {
     use AsAction;
 
     public function handle(LivestockSaved $livestockSaved): Livestock
     {
         $livestock = $livestockSaved->livestock;
-        if(is_null($livestock->number_of_pieces)){
+
+        if(is_null($livestock->mortality)){
             return $livestock;
         }
 
@@ -25,9 +26,7 @@ class CalculateMortality
             ->first();
         
         if($previousEntry){
-            $livestock->mortality = $previousEntry->number_of_pieces - $livestock->number_of_pieces;
-        } else {
-            $livestock->mortality = 0;
+            $livestock->number_of_pieces = $previousEntry->number_of_pieces - $livestock->mortality;
         }
         $livestock->saveQuietly();
         return $livestock;

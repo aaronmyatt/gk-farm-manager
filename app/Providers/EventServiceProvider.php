@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Actions\CalculateMortality;
+use App\Actions\CalculateNumberOfPieces;
 use App\Events\LivestockSaved;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -22,7 +23,8 @@ class EventServiceProvider extends ServiceProvider
         // ],
 
         LivestockSaved::class => [
-            CalculateMortality::class
+            CalculateMortality::class,
+            CalculateNumberOfPieces::class,
         ],
     ];
 

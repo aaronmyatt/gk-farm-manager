@@ -51,9 +51,10 @@ class Livestock extends Resource
             Fields\Select::make(__('Gender'))->options([
                 'female' => "Female",
                 'male' => "Male",
-            ]),
-            Fields\Number::make(__('Body Wight (g)'), 'body_weight_grams'),
-            Fields\Number::make(__('Number of'), 'number_of_pieces'),
+            ])->default('female'),
+            Fields\Number::make(__('Body Wight (g)'), 'body_weight_grams')->default(40),
+            Fields\Number::make(__('Number of'), 'number_of_pieces')->nullable(),
+            Fields\Number::make(__('Mortality'), 'mortality')->nullable(),
             Fields\BelongsTo::make('Created By', 'creator', 'App\Nova\User')->default($request->user()->getKey()),
             Fields\BelongsTo::make('Updated By', 'updater', 'App\Nova\User')->default($request->user()->getKey()),
         ];
