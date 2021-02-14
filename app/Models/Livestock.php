@@ -6,6 +6,7 @@ use App\Events\LivestockSaved;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Livestock extends Model
 {
@@ -43,7 +44,7 @@ class Livestock extends Model
     public function scopeExtractMonthFrom($query, $column='livestock.created_at', $as='month'){
         // Stolen from:
         // https://database.guide/get-the-month-name-from-a-date-in-postgresql/#:~:text=You%20can%20get%20the%20month,pattern%20you%20provide%20as%20arguments.
-        return $query->addSelect(Livestock::selectRaw("TO_CHAR($column, 'month') AS $as"));
+        return $query->addSelect(DB::raw("TO_CHAR($column, 'month') AS $as"));
     }
 
     public function scopeWhereMonth($query, $month){
@@ -63,7 +64,7 @@ class Livestock extends Model
             'december'
           );
           $index = array_search($month, $months);
-          if($index){
+          if($index === 0 || $index >= 1){
             $monthIndex = $index + 1;
             return $query->whereRaw("EXTRACT(month from livestock.created_at) = $monthIndex");
           }
