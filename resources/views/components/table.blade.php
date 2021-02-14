@@ -1,6 +1,6 @@
 @props(['optionMenu' => false])
 
-<div class="mt-8 sm:block">
+<div class="sm:block">
     <div class="inline-block min-w-full align-middle border-b border-gray-200">
         <table class="min-w-full">
             <thead>

@@ -12,6 +12,8 @@ use Mediconesystems\LivewireDatatables\Http\Livewire\LivewireDatatable;
 class LivestockDataTable extends LivewireDatatable
 {
 
+    public $beforeTableSlot='components.datatables.table-stats';
+
     public function builder()
     {
         return Livestock::whereLessThanOneYearAgo();
