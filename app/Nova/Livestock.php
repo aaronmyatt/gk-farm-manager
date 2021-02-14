@@ -45,6 +45,8 @@ class Livestock extends Resource
     {
         return [
             Fields\ID::make(__('#'), 'id'),
+            Fields\DateTime::make('Created At', 'created_at'),
+            Fields\DateTime::make('Updated At', 'updated_at'),
             Fields\BelongsTo::make(__('Tank'), 'tank', '\App\Nova\Tanks')->sortable(),
             Fields\Select::make(__('Gender'))->options([
                 'female' => "Female",

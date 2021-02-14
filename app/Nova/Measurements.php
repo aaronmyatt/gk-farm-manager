@@ -41,6 +41,8 @@ class Measurements extends Resource
     {
         return [
             Fields\ID::make(__('#'), 'id'),
+            Fields\DateTime::make('Created At', 'created_at'),
+            Fields\DateTime::make('Updated At', 'updated_at'),
             Fields\BelongsTo::make(__('Tank'), 'tank', '\App\Nova\Tanks')->sortable(),
             Fields\Number::make(__('PH'), 'ph'),
             Fields\Number::make(__('alkalinity'), 'alkalinity'),
