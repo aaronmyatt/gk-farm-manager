@@ -22,6 +22,9 @@ class LivestockDatatable extends LivewireDatatable
     public function columns()
     {
         return [
+            DateColumn::name('created_at')
+                ->label('Created Date'),
+
             DateColumn::name('updated_at')
                 ->label('Last Changed'),
 
