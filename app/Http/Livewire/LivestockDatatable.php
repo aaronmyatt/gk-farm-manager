@@ -22,9 +22,9 @@ class LivestockDatatable extends LivewireDatatable
     public function columns()
     {
         return [
-            Column::name('livestock.id')
+            NumberColumn::name('livestock.id')
                 ->label('#ID'),
-            DateColumn::name('created_at as month_group')
+            DateColumn::name('livestock.created_at')
                 ->format('F')
                 ->label('Month')
                 ->filterable(array(
