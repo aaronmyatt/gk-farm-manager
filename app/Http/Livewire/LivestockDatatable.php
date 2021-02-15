@@ -25,9 +25,6 @@ class LivestockDatatable extends LivewireDatatable
             DateColumn::name('created_at')
                 ->label('Created Date'),
 
-            DateColumn::name('updated_at')
-                ->label('Last Changed'),
-
             DateColumn::name('livestock.created_at')
                 ->format('F')
                 ->label('Month')
