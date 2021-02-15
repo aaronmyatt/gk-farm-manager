@@ -15,7 +15,6 @@ class NumberOfPiecesNullable extends Migration
     {
         Schema::table('livestock', function (Blueprint $table) {
             $table->integer('number_of_pieces')->nullable()->change();
-            $table->dropConstrainedForeignId('site_id');
         });
     }
 
