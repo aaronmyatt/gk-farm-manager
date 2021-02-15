@@ -1,6 +1,6 @@
 <div class="space-y-4">
 
-    <x-elements.select label="site" wire:model='livestock.site_id'>
+    <x-elements.select label="site" wire:model='site_id'>
         <option value="" selected> Select a Site </option>
         @foreach ($this->sites as $site)
         <option value="{{ $site->id }}">{{ $site->name }}</option>
@@ -26,10 +26,11 @@
 
     <x-form.input label="Body Weight (g)" dataType="number" wire:model.defer="livestock.body_weight_grams" />
     <x-form.input label="Number of Pieces" dataType="number" wire:model.defer="livestock.number_of_pieces" />
+    <x-form.input label="Mortality" dataType="number" wire:model.defer="livestock.mortality" />
 
 
     <div>
-        @if($this->livestock->tank_id && $this->livestock->site_id)
+        @if($this->livestock->tank_id)
         <x-elements.button wire:click="save" label="Save" />
         @else
         <x-elements.disabled-button label="Save" />

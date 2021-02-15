@@ -1,5 +1,7 @@
 <?php
 
+namespace Tests\Feature\Actions;
+
 use App\Models\Livestock;
 use App\Events\LivestockSaved;
 use App\Actions\CalculateMortality;

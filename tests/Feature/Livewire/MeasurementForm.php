@@ -1,5 +1,7 @@
 <?php
 
+namespace Tests\Feature\Livewire;
+
 use App\Http\Livewire\Measurements\Form;
 use App\Models\Measurements;
 use App\Models\User;

@@ -12,24 +12,26 @@ use Livewire\Component;
 class Form extends Component
 {
 
+    public $site_id;
     public Livestock $livestock;
     
     protected $rules = [
-        'livestock.site_id' => 'required|numeric',
         'livestock.tank_id' => 'required|numeric',
         'livestock.gender' => 'required|in:female,male',
         'livestock.body_weight_grams' => 'numeric',
         'livestock.number_of_pieces' => 'numeric',
-        
+        'livestock.mortality' => 'numeric',
     ];
 
     public function mount(Request $request){
+        $this->site_id = $this->sites->first()->id;
+        ray($this->site_id);
         $this->livestock = new Livestock();
 
         if($request->route('tank_id')){
             $tank =  Tanks::findOrFail($request->route('tank_id'));
             $this->livestock->tank_id = $tank->id;
-            $this->livestock->site_id = $tank->site_id;
+            $this->site_id = $tank->site->id;
         } 
     }
 
@@ -44,19 +46,16 @@ class Form extends Component
         return Sites::all();
     }
 
+    public function getActiveSiteProperty(){
+        return Sites::find($this->site_id);
+    }
+
     public function getTanksProperty(){
-        $site_id = $this->livestock->site_id;
-        if($site_id){
-            $tanks = Sites::find($site_id)->tanks;
-            if($tanks->isNotEmpty() && $this->livestock->tank_id == null){
-                $this->livestock->tank_id = $tanks->first()->id;
-            }
-            return $tanks;
-        } else {
-            return collect([
-                // (object) ["name" => "No tanks", "id" => ""]
-            ]);
+        $tanks = $this->activeSite->tanks;
+        if($tanks->isNotEmpty() && $this->livestock->tank_id == null){
+            $this->livestock->tank_id = $tanks->first()->id;
         }
+        return $tanks;
     }
 
     public function save()
