@@ -24,8 +24,7 @@ class LivestockDatatable extends LivewireDatatable
         return [
             DateColumn::name('livestock.created_at')
                 ->label('Created Date'),
-
-            DateColumn::name('livestock.created_at')
+            DateColumn::name('created_at as month_group')
                 ->format('F')
                 ->label('Month')
                 ->filterable(array(
