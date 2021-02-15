@@ -22,8 +22,6 @@ class LivestockDatatable extends LivewireDatatable
     public function columns()
     {
         return [
-            NumberColumn::name('livestock.id')
-                ->label('#ID'),
             DateColumn::name('livestock.created_at')
                 ->format('F')
                 ->label('Month')
