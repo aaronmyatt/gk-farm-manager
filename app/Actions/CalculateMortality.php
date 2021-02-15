@@ -17,10 +17,10 @@ class CalculateMortality
             return $livestock;
         }
 
-        $previousEntry = Livestock::where('updated_at', '<', $livestock->updated_at)
+        $previousEntry = Livestock::where('created_at', '<', $livestock->created_at)
             ->where('tank_id', $livestock->tank_id)
             ->where('gender', $livestock->gender)
-            ->latest('updated_at')
+            ->latest('created_at')
             ->limit(1)
             ->first();
         
