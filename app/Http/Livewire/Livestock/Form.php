@@ -11,7 +11,6 @@ use Livewire\Component;
 
 class Form extends Component
 {
-
     public $site_id;
     public Livestock $livestock;
     
@@ -24,11 +23,14 @@ class Form extends Component
     ];
 
     public function mount(Request $request){
-        $this->site_id = $this->sites->first()->id;
-        ray($this->site_id);
-        $this->livestock = new Livestock();
+        $id = $request->route('id');
+        $tank_id = $request->route('tank_id');
 
-        if($request->route('tank_id')){
+        $this->livestock = Livestock::findOrNew($id);
+
+        $this->site_id = $this->livestock->site ? $this->livestock->site->id : $this->sites->first()->id;
+
+        if($tank_id){
             $tank =  Tanks::findOrFail($request->route('tank_id'));
             $this->livestock->tank_id = $tank->id;
             $this->site_id = $tank->site->id;

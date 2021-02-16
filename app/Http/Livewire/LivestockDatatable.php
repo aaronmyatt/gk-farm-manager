@@ -57,6 +57,10 @@ class LivestockDatatable extends LivewireDatatable
             NumberColumn::name('mortality')
                 ->label('Mortality'),
 
+            Column::callback(['id'], function ($id) {
+                return view('components.datatable.livestock-actions', ['id' => $id]);
+            })
+
         ];
     }
 }

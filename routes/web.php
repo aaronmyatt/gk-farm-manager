@@ -49,6 +49,8 @@ Route::get('/measurements', function () {
     ]);
 })->name('measurements');
 
+
+// TODO: nest all these under a route group(?)
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
@@ -56,6 +58,12 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/livestock/form/{tank_id?}', function ($tank_id = null) {
     return view('livestock/form');
 })->name('livestock-form');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/livestock/{id}/edit', function ($id) {
+    return view('livestock/edit', [
+        'livestock' => \App\Models\Livestock::findOrFail($id)
+    ]);
+})->name('livestockEdit');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/measurements/form/{tank_id?}', function ($tank_id = null) {
     return view('measurements/form');
