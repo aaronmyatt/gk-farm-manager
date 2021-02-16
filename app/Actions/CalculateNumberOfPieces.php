@@ -18,6 +18,11 @@ class CalculateNumberOfPieces
             return $livestock;
         }
 
+        // Don't override existing values if they are already calculated
+        if($livestock->number_of_pieces > 0 && $livestock->mortality > 0){
+            return $livestock;
+        }
+
         $previousEntry = Livestock::where('created_at', '<', $livestock->created_at)
             ->where('tank_id', $livestock->tank_id)
             ->where('gender', $livestock->gender)

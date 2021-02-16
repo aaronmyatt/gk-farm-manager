@@ -90,3 +90,26 @@ it('bails early when number of pieces not set', function () {
 
     assertTrue($livestock->mortality === null);
 });
+
+it('bails early when number of pieces AND mortality set', function () {
+    $this->actingAs(User::factory()->create());
+
+    Livestock::factory([
+        'gender' => 'female',
+        'tank_id' => Tanks::all()->last()->id,
+        'created_at' => Carbon::now()->subDays(1),
+        'updated_at' => Carbon::now()->subDays(1)
+    ])->create();
+
+    $livestock = Livestock::factory([
+        'number_of_pieces' => 123,
+        'mortality' => 3,
+    ])->make();
+    $livestock->save();
+
+    $event = new LivestockSaved($livestock);
+    $action = new CalculateMortality();
+    $livestock = $action->handle($event);
+
+    $this->assertEquals($livestock->mortality, 3);
+});

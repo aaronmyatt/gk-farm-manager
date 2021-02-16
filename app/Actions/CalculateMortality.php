@@ -13,7 +13,14 @@ class CalculateMortality
     public function handle(LivestockSaved $livestockSaved): Livestock
     {
         $livestock = $livestockSaved->livestock;
+
+        // We can't calculate mortality with comparing number_of_pieces
         if(is_null($livestock->number_of_pieces)){
+            return $livestock;
+        }
+
+        // Don't override existing values if they are already calculated
+        if($livestock->number_of_pieces > 0 && $livestock->mortality > 0){
             return $livestock;
         }
 
