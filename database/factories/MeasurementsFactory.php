@@ -24,7 +24,6 @@ class MeasurementsFactory extends Factory
         return [
             'created_by' => \App\Models\User::first(),
             'updated_by' => \App\Models\User::first(),
-            'site_id' => \App\Models\Sites::first(),
             'tank_id' => \App\Models\Tanks::all()->random(),
             'ph' => $this->faker->randomFloat(NULL, 6, 9),
             'alkalinity' => $this->faker->numberBetween(60,120),

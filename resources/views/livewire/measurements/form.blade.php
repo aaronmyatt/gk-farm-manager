@@ -1,6 +1,6 @@
 <div class="space-y-4">
 
-    <x-elements.select label="site" wire:model='measurement.site_id'>
+    <x-elements.select label="site" wire:model='site_id'>
         <option value="" selected> Select a Site </option>
         @foreach ($this->sites as $site)
         <option value="{{ $site->id }}">{{ $site->name }}</option>
@@ -25,7 +25,7 @@
     <x-form.input label="Temperature" dataType="number" wire:model.defer="measurement.temperature" />
     <x-form.textarea label="remark" placeholder="Enter remarks" wire:model.defer="measurement.remark" />
     <div>
-        @if($this->measurement->tank_id && $this->measurement->site_id)
+        @if($this->measurement->tank_id)
         <x-elements.button wire:click="save" label="Save" />
         @else
         <x-elements.disabled-button label="Save" />

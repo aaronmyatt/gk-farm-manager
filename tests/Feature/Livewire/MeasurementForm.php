@@ -11,7 +11,7 @@ it('has measurementform page', function () {
     $this->actingAs(User::factory()->create());
 
     Livewire::test(Form::class)
-        ->set('measurement.site_id', 1)
+        ->set('site_id', 1)
         ->set('measurement.tank_id', 1)
         ->set('measurement.ph', 15)
         ->call('save')
@@ -23,7 +23,7 @@ it('redirects to Measurement page', function () {
     $this->actingAs(User::factory()->create());
 
     Livewire::test(Form::class)
-        ->set('measurement.site_id', 1)
+        ->set('site_id', 1)
         ->set('measurement.tank_id', 1)
         ->set('measurement.ph', 7)
         ->set('measurement.alkalinity', 15)
@@ -43,7 +43,7 @@ it('saves one new measurements row', function () {
     $count = Measurements::count();
 
     Livewire::test(Form::class)
-        ->set('measurement.site_id', 1)
+        ->set('site_id', 1)
         ->set('measurement.tank_id', 1)
         ->set('measurement.ph', 7)
         ->set('measurement.alkalinity', 15)

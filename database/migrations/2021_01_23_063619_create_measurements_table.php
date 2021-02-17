@@ -18,7 +18,6 @@ class CreateMeasurementsTable extends Migration
             $table->timestamps();
             $table->foreignId('created_by')->constrained('users');
             $table->foreignId('updated_by')->constrained('users');
-            $table->foreignId('site_id')->constrained('sites');
             $table->foreignId('tank_id')->constrained('tanks');
             $table->decimal('ph')->nullable();
             $table->decimal('alkalinity')->nullable();

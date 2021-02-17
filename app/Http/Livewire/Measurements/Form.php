@@ -13,9 +13,9 @@ class Form extends Component
 {
 
     public Measurements $measurement;
+    public $site_id;
     
     protected $rules = [
-        'measurement.site_id' => 'required|numeric',
         'measurement.tank_id' => 'required|numeric',
         'measurement.ph' => 'numeric|between:1,14',
         'measurement.alkalinity' => 'numeric',
@@ -29,18 +29,19 @@ class Form extends Component
     ];
 
     public function mount(Request $request){
+        $tank_id = $request->route('tank_id');
         $this->measurement = new Measurements();
 
-        if($request->route('tank_id')){
-            $tank =  Tanks::findOrFail($request->route('tank_id'));
+        if($tank_id){
+            $tank =  Tanks::findOrFail($tank_id);
             $this->measurement->tank_id = $tank->id;
-            $this->measurement->site_id = $tank->site_id;
+            $this->site_id = $tank->site_id;
         } 
     }
 
     public function updated($name)
     {
-        if($name == "measurement.site_id"){
+        if($name == "site_id"){
             $this->measurement->tank_id = null;
         }
     }
@@ -50,7 +51,7 @@ class Form extends Component
     }
 
     public function getTanksProperty(){
-        $site_id = $this->measurement->site_id;
+        $site_id = $this->site_id;
         if($site_id){
             $tanks = Sites::find($site_id)->tanks;
             if($tanks->isNotEmpty() && $this->measurement->tank_id == null){
