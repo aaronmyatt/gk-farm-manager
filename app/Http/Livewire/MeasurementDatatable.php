@@ -12,8 +12,6 @@ use Mediconesystems\LivewireDatatables\Http\Livewire\LivewireDatatable;
 class MeasurementDatatable extends LivewireDatatable
 {
 
-    public $beforeTableSlot='components.datatables.table-stats';
-
     public function builder()
     {
         return Measurements::whereLessThanOneYearAgo();
@@ -46,8 +44,7 @@ class MeasurementDatatable extends LivewireDatatable
 
             Column::callback(['id'], function ($id) {
                 return view('components.datatable.measurement-actions', ['id' => $id]);
-            })
-
+            }),
         ];
     }
 }
