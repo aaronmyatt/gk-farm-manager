@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Measurements extends Model
 {
@@ -41,10 +43,10 @@ class Measurements extends Model
     }
 
     public function scopeWhereLessThanOneYearAgo($query){
-        return $query->where('livestock.created_at', '>', Carbon::today()->subYears(1));
+        return $query->where('measurements.created_at', '>', Carbon::today()->subYears(1));
     }
 
-    public function scopeExtractMonthFrom($query, $column='livestock.recorded_at', $as='month'){
+    public function scopeExtractMonthFrom($query, $column='measurements.recorded_at', $as='month'){
         // Stolen from:
         // https://database.guide/get-the-month-name-from-a-date-in-postgresql/#:~:text=You%20can%20get%20the%20month,pattern%20you%20provide%20as%20arguments.
         return $query->addSelect(DB::raw("TO_CHAR($column, 'month') AS $as"));
@@ -69,7 +71,7 @@ class Measurements extends Model
           $index = array_search($month, $months);
           if($index === 0 || $index >= 1){
             $monthIndex = $index + 1;
-            return $query->whereRaw("EXTRACT(month from livestock.recorded_at) = $monthIndex");
+            return $query->whereRaw("EXTRACT(month from measurements.recorded_at) = $monthIndex");
           }
     }
 }

@@ -13,6 +13,8 @@
     <div class="py-6">
         <div class="px-2 mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="bg-white shadow-xl sm:rounded-lg">
+                <livewire:measurement-datatable />
+
                 <x-table>  
                     <x-slot name="tableHeader">
                         <x-table-head-item>
