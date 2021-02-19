@@ -51,7 +51,7 @@ class Measurements extends Resource
             Fields\Number::make(__('fe'), 'fe'),
             Fields\Number::make(__('temperature'), 'temperature'),
             Fields\Number::make(__('salinity'), 'salinity'),
-            Fields\TextArea::make(__('Remark'), 'remark'),
+            Fields\Textarea::make(__('Remark'), 'remark'),
             Fields\BelongsTo::make('Created By', 'creator', 'App\Nova\User')->default($request->user()->getKey()),
             Fields\BelongsTo::make('Updated By', 'updater', 'App\Nova\User')->default($request->user()->getKey()),
         ];
