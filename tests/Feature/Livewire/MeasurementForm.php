@@ -5,6 +5,7 @@ namespace Tests\Feature\Livewire;
 use App\Http\Livewire\Measurements\Form;
 use App\Models\Measurements;
 use App\Models\User;
+use Carbon\Carbon;
 use Livewire\Livewire;
 
 it('has measurementform page', function () {
@@ -19,7 +20,7 @@ it('has measurementform page', function () {
 });
 
 it('redirects to Measurement page', function () {
-    
+
     $this->actingAs(User::factory()->create());
 
     Livewire::test(Form::class)
@@ -58,4 +59,24 @@ it('saves one new measurements row', function () {
 
     Ray(Measurements::count())->red();
     $this->assertTrue(Measurements::count() === ($count + 1));
+});
+
+it('sets recorded_at date to today', function () {
+    $this->actingAs(User::factory()->create());
+
+    Livewire::test(Form::class)
+        ->set('site_id', 1)
+        ->set('measurement.tank_id', 1)
+        ->set('measurement.ph', 7)
+        ->set('measurement.alkalinity', 15)
+        ->set('measurement.nh3', 15)
+        ->set('measurement.no2', 15)
+        ->set('measurement.no3', 15)
+        ->set('measurement.fe', 15)
+        ->set('measurement.salinity', 15)
+        ->set('measurement.temperature', 15)
+        ->set('measurement.remark', "all good")
+        ->call('save');
+
+    $this->assertEquals(Measurements::orderBy('recorded_at', 'desc')->first()->recorded_at, Carbon::today());
 });

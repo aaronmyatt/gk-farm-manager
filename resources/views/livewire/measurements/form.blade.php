@@ -15,6 +15,8 @@
         @endforeach
     </x-elements.select>
 
+    <x-form.input label="Date" dataType="date" wire:model.defer="measurement.recorded_at"/>
+
     <x-form.input label="pH" dataType="number" wire:model.defer="measurement.ph" error-message="pH must be between 1 and 14"/>
     <x-form.input label="Alkalinity" dataType="number" wire:model.defer="measurement.alkalinity" />
     <x-form.input label="NH3" dataType="number" wire:model.defer="measurement.nh3" />

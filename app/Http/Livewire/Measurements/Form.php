@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Measurements;
 use App\Models\Measurements;
 use App\Models\Sites;
 use App\Models\Tanks;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -17,6 +18,7 @@ class Form extends Component
     
     protected $rules = [
         'measurement.tank_id' => 'required|numeric',
+        'measurement.recorded_at' => 'required|date',
         'measurement.ph' => 'numeric|between:1,14',
         'measurement.alkalinity' => 'numeric',
         'measurement.nh3' => 'numeric',
@@ -31,6 +33,8 @@ class Form extends Component
     public function mount(Request $request){
         $tank_id = $request->route('tank_id');
         $this->measurement = new Measurements();
+
+        $this->measurement->recorded_at = ($this->measurement->recorded_at ? $this->measurement->recorded_at : Carbon::today());
 
         if($tank_id){
             $tank =  Tanks::findOrFail($tank_id);
