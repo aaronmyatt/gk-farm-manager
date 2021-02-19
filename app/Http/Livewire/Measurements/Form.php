@@ -31,8 +31,12 @@ class Form extends Component
     ];
 
     public function mount(Request $request){
+        $id = $request->route('id');
         $tank_id = $request->route('tank_id');
         $this->measurement = new Measurements();
+
+        $this->measurement = Measurements::findOrNew($id);
+        $this->site_id = $this->measurement->site ? $this->measurement->site->id : $this->sites->first()->id;
 
         $this->measurement->recorded_at = ($this->measurement->recorded_at ? $this->measurement->recorded_at : Carbon::today());
 

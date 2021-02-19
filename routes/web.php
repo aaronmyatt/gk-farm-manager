@@ -65,6 +65,12 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/livestock/{id}/edit', fun
     ]);
 })->name('livestockEdit');
 
+Route::middleware(['auth:sanctum', 'verified'])->get('/measurements/{id}/edit', function ($id) {
+    return view('measurements/edit', [
+        'measurements' => \App\Models\Measurements::findOrFail($id)
+    ]);
+})->name('measurementEdit');
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/measurements/form/{tank_id?}', function ($tank_id = null) {
     return view('measurements/form');
 })->name('measurements-form');
