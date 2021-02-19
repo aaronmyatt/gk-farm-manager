@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Livestock;
 use App\Models\Livestock;
 use App\Models\Sites;
 use App\Models\Tanks;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -13,48 +14,55 @@ class Form extends Component
 {
     public $site_id;
     public Livestock $livestock;
-    
+
     protected $rules = [
         'livestock.tank_id' => 'required|numeric',
         'livestock.gender' => 'required|in:female,male',
+        'livestock.recorded_at' => 'required|date',
         'livestock.body_weight_grams' => 'numeric',
         'livestock.number_of_pieces' => 'numeric',
         'livestock.mortality' => 'numeric',
     ];
 
-    public function mount(Request $request){
+    public function mount(Request $request)
+    {
         $id = $request->route('id');
         $tank_id = $request->route('tank_id');
 
         $this->livestock = Livestock::findOrNew($id);
 
+        $this->livestock->recorded_at = ($this->livestock->recorded_at ? $this->livestock->recorded_at : Carbon::today());
+
         $this->site_id = $this->livestock->site ? $this->livestock->site->id : $this->sites->first()->id;
 
-        if($tank_id){
+        if ($tank_id) {
             $tank =  Tanks::findOrFail($request->route('tank_id'));
             $this->livestock->tank_id = $tank->id;
             $this->site_id = $tank->site->id;
-        } 
+        }
     }
 
     public function updated($name)
     {
-        if($name == "livestock.site_id"){
+        if ($name == "livestock.site_id") {
             $this->livestock->tank_id = null;
         }
     }
 
-    public function getSitesProperty(){
+    public function getSitesProperty()
+    {
         return Sites::all();
     }
 
-    public function getActiveSiteProperty(){
+    public function getActiveSiteProperty()
+    {
         return Sites::find($this->site_id);
     }
 
-    public function getTanksProperty(){
+    public function getTanksProperty()
+    {
         $tanks = $this->activeSite->tanks;
-        if($tanks->isNotEmpty() && $this->livestock->tank_id == null){
+        if ($tanks->isNotEmpty() && $this->livestock->tank_id == null) {
             $this->livestock->tank_id = $tanks->first()->id;
         }
         return $tanks;
@@ -62,10 +70,9 @@ class Form extends Component
 
     public function save()
     {
-        Ray($this->livestock)->green();
         $this->validate();
 
-        $this->livestock->created_by = Auth::id();
+        $this->livestock->created_by = ($this->livestock->created_by ? $this->livestock->created_by : Auth::id());
         $this->livestock->updated_by = Auth::id();
         $this->livestock->save();
         return redirect()->route('livestock');
@@ -76,4 +83,3 @@ class Form extends Component
         return view('livewire.livestock.form');
     }
 }
-

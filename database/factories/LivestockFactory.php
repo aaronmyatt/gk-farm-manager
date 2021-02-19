@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Livestock;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class LivestockFactory extends Factory
@@ -29,6 +30,7 @@ class LivestockFactory extends Factory
             'gender' => $this->faker->randomElement(['male', 'female']),
             'body_weight_grams' => $this->faker->numberBetween(40, 50),
             'number_of_pieces' => 500,
+            'recorded_at' => Carbon::today(),
         ];
     }
 }

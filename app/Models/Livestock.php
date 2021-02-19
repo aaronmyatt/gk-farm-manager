@@ -23,7 +23,7 @@ class Livestock extends Model
     ];
 
     protected $casts = [
-        'recorded_at' => 'date',
+        'recorded_at' => 'date:Y-m-d',
     ];
 
     public function tank()
@@ -45,7 +45,7 @@ class Livestock extends Model
         return $query->where('livestock.created_at', '>', Carbon::today()->subYears(1));
     }
 
-    public function scopeExtractMonthFrom($query, $column='livestock.created_at', $as='month'){
+    public function scopeExtractMonthFrom($query, $column='livestock.recorded_at', $as='month'){
         // Stolen from:
         // https://database.guide/get-the-month-name-from-a-date-in-postgresql/#:~:text=You%20can%20get%20the%20month,pattern%20you%20provide%20as%20arguments.
         return $query->addSelect(DB::raw("TO_CHAR($column, 'month') AS $as"));
@@ -70,7 +70,7 @@ class Livestock extends Model
           $index = array_search($month, $months);
           if($index === 0 || $index >= 1){
             $monthIndex = $index + 1;
-            return $query->whereRaw("EXTRACT(month from livestock.created_at) = $monthIndex");
+            return $query->whereRaw("EXTRACT(month from livestock.recorded_at) = $monthIndex");
           }
     }
 }

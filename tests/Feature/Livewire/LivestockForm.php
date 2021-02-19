@@ -54,6 +54,6 @@ it('sets recorded_at date to today', function () {
         ->set('livestock.gender', 'male')
         ->call('save');
 
-    $this->assertEquals(Livestock::first()->recorded_at, Carbon::today());
+    $this->assertEquals(Livestock::orderBy('recorded_at', 'desc')->first()->recorded_at, Carbon::today());
     Event::assertDispatched(LivestockSaved::class);
 });

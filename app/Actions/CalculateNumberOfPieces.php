@@ -23,7 +23,7 @@ class CalculateNumberOfPieces
             return $livestock;
         }
 
-        $previousEntry = Livestock::where('created_at', '<', $livestock->created_at)
+        $previousEntry = Livestock::where('created_at', '<', $livestock->recorded_at)
             ->where('tank_id', $livestock->tank_id)
             ->where('gender', $livestock->gender)
             ->latest('created_at')

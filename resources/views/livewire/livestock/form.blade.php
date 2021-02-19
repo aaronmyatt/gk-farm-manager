@@ -24,6 +24,7 @@
         </option>
     </x-elements.select>
 
+    <x-form.input label="Date" dataType="date" wire:model="livestock.recorded_at" />
     <x-form.input label="Body Weight (g)" dataType="number" wire:model.defer="livestock.body_weight_grams" />
     <x-form.input label="Number of Pieces" dataType="number" wire:model.defer="livestock.number_of_pieces" />
     <x-form.input label="Mortality" dataType="number" wire:model.defer="livestock.mortality" />
