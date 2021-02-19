@@ -22,6 +22,10 @@ class Livestock extends Model
         'gender' => 'female'
     ];
 
+    protected $casts = [
+        'recorded_at' => 'date',
+    ];
+
     public function tank()
     {
         return $this->belongsTo(Tanks::class);
