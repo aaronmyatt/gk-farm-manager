@@ -74,4 +74,8 @@ class Measurements extends Model
             return $query->whereRaw("EXTRACT(month from measurements.recorded_at) = $monthIndex");
           }
     }
+
+    public function scopeSelectRowAsJson($query){
+        return $query->addSelect(DB::raw("to_json(measurements.*) as json_row"));
+    }
 }

@@ -6,7 +6,6 @@ use App\Models\Measurements;
 use App\Models\Tanks;
 use Mediconesystems\LivewireDatatables\Column;
 use Mediconesystems\LivewireDatatables\DateColumn;
-use Mediconesystems\LivewireDatatables\NumberColumn;
 use Mediconesystems\LivewireDatatables\Http\Livewire\LivewireDatatable;
 
 class MeasurementDatatable extends LivewireDatatable
@@ -42,9 +41,12 @@ class MeasurementDatatable extends LivewireDatatable
                 ->label('Tank')
                 ->filterable(Tanks::pluck('name')),
 
+            Column::scope('selectRowAsJson', 'json_row')->view('components.stat-grid'),
+
             Column::callback(['id'], function ($id) {
                 return view('components.datatable.measurement-actions', ['id' => $id]);
             }),
+
         ];
     }
 }
