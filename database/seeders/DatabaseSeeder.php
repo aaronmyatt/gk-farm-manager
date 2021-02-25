@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             TanksSeeder::class,
             LivestockSeeder::class,
             MeasurementsSeeder::class,
+            FoodTypeSeeder::class,
         ]);
     }
 }
